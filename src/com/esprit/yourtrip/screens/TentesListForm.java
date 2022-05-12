@@ -8,6 +8,7 @@ package com.esprit.yourtrip.screens;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
+import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.Stroke;
 import com.codename1.ui.layouts.BoxLayout;
@@ -22,12 +23,14 @@ import java.util.ArrayList;
  *
  * @author Amen
  */
-public class TentesListForm extends BaseForm 
+public class TentesListForm extends Form 
 {
 
     public TentesListForm() {
-        super.addSideMenu();
         setTitle("Tentes");
+        getToolbar().addMaterialCommandToSideMenu("Centres De Camping", FontImage.MATERIAL_NATURE, e -> new CentresCampingListForm().show());
+        getToolbar().addMaterialCommandToSideMenu("Tentes", FontImage.MATERIAL_HOME, e -> new TentesListForm().show());
+        
         getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e -> {
                new AddUpdateTenteForm(this,true,new Tente()).show();
         });
@@ -47,13 +50,12 @@ public class TentesListForm extends BaseForm
             Container detailsContainer = new Container(BoxLayout.y());
             Container buttonContainer = new Container(BoxLayout.x());
 
-            // EncodedImage spinner = EncodedImage.create("/spinner.png");
-            //String url = "https://avatars.dicebear.com/api/bottts/" + c.getNom() + ".png";
-            //Image gameImage = URLImage.createToStorage(spinner, url, url, URLImage.RESIZE_SCALE);
-            //ImageViewer image = new ImageViewer(gameImage);
-            
             Label lbTitle = new Label(t.getNom());
+                                lbTitle.getAllStyles().setFgColor(0xFFFFFF);
+
             Label lbDescription = new Label(t.getDescription());
+                                lbDescription.getAllStyles().setFgColor(0xFFFFFF);
+
             Button btUpdate = new Button("Modifier");
             Button btDelete = new Button("Supprimer");
             

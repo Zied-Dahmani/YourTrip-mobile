@@ -56,10 +56,19 @@ private CentreCamping centre;
             
             Button submitBtn = new Button("");
            
-            nomContainer.addAll(new Label("Nom: "),nomTF);
-            adresseContainer.addAll(new Label("Adresse: "),adresseTF);
-            emailContainer.addAll(new Label("Email: "),emailTF);
-            descriptionContainer.addAll(new Label("Description:"), descriptionTA);
+            Label lbNom = new Label("Nom:");
+                                lbNom.getAllStyles().setFgColor(0xFFFFFF);
+            Label lbAdresse = new Label("Adresse:");
+                                lbAdresse.getAllStyles().setFgColor(0xFFFFFF);
+            Label lbEmail = new Label("Email:");
+                                lbEmail.getAllStyles().setFgColor(0xFFFFFF);
+            Label lbDescription = new Label("Description:");
+                                lbDescription.getAllStyles().setFgColor(0xFFFFFF); 
+                                
+            nomContainer.addAll(lbNom,nomTF);
+            adresseContainer.addAll(lbAdresse,adresseTF);
+            emailContainer.addAll(lbEmail,emailTF);
+            descriptionContainer.addAll(lbDescription, descriptionTA);
             
             
             if(add)
@@ -96,7 +105,8 @@ private CentreCamping centre;
             new CentresCampingListForm().show();
             });
             }
-
+            
+            submitBtn.getStyle().setFgColor(0xFFFFFF);
             this.addAll(nomContainer, adresseContainer,emailContainer,descriptionContainer, submitBtn);
             this.setLayout(BoxLayout.y());
 

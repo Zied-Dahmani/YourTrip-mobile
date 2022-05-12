@@ -29,17 +29,18 @@ import java.util.ArrayList;
  *
  * @author Amen
  */
-public class CentresCampingListForm extends BaseForm 
+public class CentresCampingListForm extends Form 
 {
 
     public CentresCampingListForm() {
-        super.addSideMenu();
         setTitle("Centres De Camping");
+        getToolbar().addMaterialCommandToSideMenu("Centres De Camping", FontImage.MATERIAL_NATURE, e -> new CentresCampingListForm().show());
+        getToolbar().addMaterialCommandToSideMenu("Tentes", FontImage.MATERIAL_HOME, e -> new TentesListForm().show());
         getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e -> {
                 new AddUpdateCentreCampingForm(this,true,new CentreCamping()).show();
             
         });
-         
+        
         Container searchContainer = new Container(BoxLayout.x());
         TextField searchTF = new TextField("", "Search");
         searchContainer.add(searchTF);
@@ -76,13 +77,11 @@ public class CentresCampingListForm extends BaseForm
             Container detailsContainer = new Container(BoxLayout.y());
             Container buttonContainer = new Container(BoxLayout.x());
 
-            // EncodedImage spinner = EncodedImage.create("/spinner.png");
-            //String url = "https://avatars.dicebear.com/api/bottts/" + c.getNom() + ".png";
-            //Image gameImage = URLImage.createToStorage(spinner, url, url, URLImage.RESIZE_SCALE);
-            //ImageViewer image = new ImageViewer(gameImage);
-
             Label lbTitle = new Label(c.getNom());
+                    lbTitle.getAllStyles().setFgColor(0xFFFFFF);
             Label lbAdresse = new Label(c.getAdresse());
+                    lbAdresse.getAllStyles().setFgColor(0xFFFFFF);
+
             Button btUpdate = new Button("Modifier");
             Button btDelete = new Button("Supprimer");
             

@@ -54,21 +54,32 @@ private CentreCamping centre;
            
             Button submitBtn = new Button("");
            
-            nomContainer.addAll(new Label("Nom: "),nomTF);
-            prixContainer.addAll(new Label("Prix: "),prixTF);
+            Label lbNom = new Label("Nom:");
+                                lbNom.getAllStyles().setFgColor(0xFFFFFF);
+            Label lbPrix = new Label("Prix:");
+                                lbPrix.getAllStyles().setFgColor(0xFFFFFF);
+             Label lbDescription = new Label("Description:");
+                                lbDescription.getAllStyles().setFgColor(0xFFFFFF);
+                                
+            nomContainer.addAll(lbNom,nomTF);
+            prixContainer.addAll(lbPrix,prixTF);
             
             
             if(add)
             {
             submitBtn.setText("Ajouter");
-           
+                    
             ComboBox<String> centresCB = new ComboBox<>();
             ArrayList<CentreCamping> centres = CentreCampingService.getInstance().getAllCentresCamping();
             for (CentreCamping centre : centres) {
                 centresCB.addItem(Integer.toString(centre.getId()));
             }
             
-                descriptionContainer.addAll(new Label("Description:"), descriptionTA,new Label("Centre De Camping:"),centresCB);
+           
+            Label lbCentres = new Label("Centre De Camping:");
+                                lbCentres.getAllStyles().setFgColor(0xFFFFFF);
+            
+                descriptionContainer.addAll(lbDescription, descriptionTA,lbCentres,centresCB);
             
             submitBtn.addActionListener(e->{
                 if(nomTF.getText()==""||prixTF.getText()==""||descriptionTA.getText()=="")
@@ -84,8 +95,8 @@ private CentreCamping centre;
             else
             {
             submitBtn.setText("Modifier");
-            
-                descriptionContainer.addAll(new Label("Description:"), descriptionTA);
+
+                descriptionContainer.addAll(lbDescription, descriptionTA);
 
             nomTF.setText(c.getNom());
             prixTF.setText(String.valueOf(c.getPrix()));
@@ -102,7 +113,9 @@ private CentreCamping centre;
             });
             
             }
+                        
             
+            submitBtn.getStyle().setFgColor(0xFFFFFF);
             this.addAll(nomContainer, prixContainer,descriptionContainer, submitBtn);
             this.setLayout(BoxLayout.y());
 
