@@ -109,7 +109,6 @@ public class CentreCampingService {
         req.setUrl(url);
         req.setPost(true);
         req.setHttpMethod("POST");
-        //req.addArgument("username", MyApplication.loggedUser.getUsername());
         req.addArgument("id", id.toString());
         req.addArgument("nom", nom);
         req.addArgument("adresse", adresse);

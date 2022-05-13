@@ -54,7 +54,7 @@ public class CentresCampingListForm extends Form
 
             for (CentreCamping c : centres) {
                 if (c.getNom().toLowerCase().contains(searchTF.getText().toLowerCase()) || searchTF.getText().equals("")) {
-                    centresContainer.add(this.addCentresHolder(c));
+                    centresContainer.add(this.CentreContainer(c));
                 }
             }
             this.refreshTheme();
@@ -63,22 +63,22 @@ public class CentresCampingListForm extends Form
         
         
         for (CentreCamping c : centres) {
-         centresContainer.add(this.addCentresHolder(c));
+         centresContainer.add(this.CentreContainer(c));
         }
                 
         this.addAll(searchContainer,centresContainer);
 
     }
 
-    private Container addCentresHolder(CentreCamping c) {
+    private Container CentreContainer(CentreCamping c) {
         try {
            
             Container holderContainer = new Container(BoxLayout.x());
             Container detailsContainer = new Container(BoxLayout.y());
             Container buttonContainer = new Container(BoxLayout.x());
 
-            Label lbTitle = new Label(c.getNom());
-                    lbTitle.getAllStyles().setFgColor(0xFFFFFF);
+            Label lbNom = new Label(c.getNom());
+                    lbNom.getAllStyles().setFgColor(0xFFFFFF);
             Label lbAdresse = new Label(c.getAdresse());
                     lbAdresse.getAllStyles().setFgColor(0xFFFFFF);
 
@@ -103,7 +103,7 @@ public class CentresCampingListForm extends Form
             
             
             buttonContainer.addAll(btUpdate, btDelete);
-            detailsContainer.addAll(lbTitle, lbAdresse,buttonContainer);
+            detailsContainer.addAll(lbNom, lbAdresse,buttonContainer);
             holderContainer.addAll(detailsContainer);
 
             btUpdate.addActionListener(e -> {

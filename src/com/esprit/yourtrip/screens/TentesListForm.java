@@ -37,21 +37,21 @@ public class TentesListForm extends Form
          
         ArrayList<Tente> tentes = TenteService.getInstance().getAllTentes();
         for (Tente t : tentes) {
-         this.add(this.addCentresHolder(t));
+         this.add(this.TenteContainer(t));
         }
                 
       
     }
 
-    private Container addCentresHolder(Tente t) {
+    private Container TenteContainer(Tente t) {
         try {
            
             Container holderContainer = new Container(BoxLayout.x());
             Container detailsContainer = new Container(BoxLayout.y());
             Container buttonContainer = new Container(BoxLayout.x());
 
-            Label lbTitle = new Label(t.getNom());
-                                lbTitle.getAllStyles().setFgColor(0xFFFFFF);
+            Label lbNom = new Label(t.getNom());
+                                lbNom.getAllStyles().setFgColor(0xFFFFFF);
 
             Label lbDescription = new Label(t.getDescription());
                                 lbDescription.getAllStyles().setFgColor(0xFFFFFF);
@@ -77,7 +77,7 @@ public class TentesListForm extends Form
             
             
             buttonContainer.addAll(btUpdate, btDelete);
-            detailsContainer.addAll(lbTitle, lbDescription,buttonContainer);
+            detailsContainer.addAll(lbNom, lbDescription,buttonContainer);
             holderContainer.addAll(detailsContainer);
 
             btUpdate.addActionListener(e -> {
